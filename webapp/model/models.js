@@ -4,7 +4,7 @@ sap.ui.define([
 ], function(JSONModel, Device) {
 	"use strict";
 	var serverInfo = {
-		url: "http://113.161.84.125:8089/new",
+		url: "https://backend-mortgage.dfksoft.com/new",
 		localUrl: "model",
 		useLocal: false
 	};
