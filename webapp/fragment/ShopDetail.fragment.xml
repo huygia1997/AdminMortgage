@@ -1,0 +1,66 @@
+<core:FragmentDefinition xmlns:core='sap.ui.core' xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:fb="sap.ui.comp.filterbar">
+	<Dialog title="{i18n>title_shopDetail}" afterClose="dialogAfterclose">
+		<content>
+			<VBox class="fragment_shopDetail">
+				<HBox class="itemOfShopDetail">
+					<Label text="{i18n>lb_status}" class="label_shopDetail"/>
+					<ObjectStatus text="{ path: 'listResult>/status', formatter: '.formatter.shopStatusDesc' }"
+								state="{ path: 'listResult>/status', formatter: '.formatter.shopStatusState' }"/>
+					<Button visible="{= ${listResult>/active} === true}" text="{i18n>btn_active}" press="onActiveShop" class="btn_active_shop"/>
+					<Button visible="{= ${listResult>/active} === false}" text="{i18n>BANNED}" press="onUnActiveShop" class="btn_unactive_shop"/>
+				</HBox>
+				<HBox class="itemOfShopDetail">
+					<Label text="{i18n>lb_cateImage}" class="label_shopDetail"/>
+					<Image src="{listResult>/avaUrl}" class="image_User"/>
+				</HBox>
+				<HBox class="itemOfShopDetail">
+					<Label text="{i18n>lb_shopName}" class="label_shopDetail"/>
+					<Title text="{listResult>/shopName}"/>
+				</HBox>
+				<HBox class="itemOfShopDetail">
+					<Label text="{i18n>lb_rating}" class="label_shopDetail"/>
+					<RatingIndicator id="RI_default" maxValue="5" class="sapUiSmallMarginBottom fixCenter customTextShop" value="{listResult>/rating}"
+						tooltip="Rating Tooltip" displayOnly="true"/>
+				</HBox>
+				<HBox class="itemOfShopDetail">
+					<Label text="{i18n>lb_phone}" class="label_shopDetail"/>
+					<Title text="{listResult>/phoneNumber}"/>
+				</HBox>
+				<HBox class="itemOfShopDetail">
+					<Label text="{i18n>lb_address}" class="label_shopDetail"/>
+					<Title text="{listResult>/fullAddress}"/>
+				</HBox>
+				<HBox class="itemOfShopDetail">
+					<Label text="{i18n>lb_email}" class="label_shopDetail"/>
+					<Title text="{listResult>/email}"/>
+				</HBox>
+				<HBox class="itemOfShopDetail">
+					<Label text="{i18n>lb_facebook}" class="label_shopDetail"/>
+					<Title text="{listResult>/facebook}"/>
+				</HBox>
+				<HBox class="itemOfShopDetail">
+					<Label text="{i18n>lb_policy}" class="label_shopDetail"/>
+					<Title text="{listResult>/policy}"/>
+				</HBox>
+				<HBox class="itemOfShopDetail">
+					<Label text="{i18n>lb_view}" class="label_shopDetail"/>
+					<Title text="{listResult>/viewCount} lượt xem"/>
+				</HBox>
+				<HBox class="itemOfShopDetail">
+					<Label text="{i18n>lb_category}" class="label_shopDetail"/>
+					<List id="ListCategory" items="{oModelCate>/results}" class="sortList_container">
+						<CustomListItem class="listCategory_fragment">
+							<VBox class="list_category_fragment">
+								<Image class="categoy_image" src="{oModelCate>iconUrl}" width="50px"/>
+								<Title text="{oModelCate>categoryName}" class="category_text"/>
+							</VBox>
+						</CustomListItem>
+					</List>
+				</HBox>
+			</VBox>
+		</content>
+		<endButton>
+			<Button text="Close" press="onDialogClose" type="Accept"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

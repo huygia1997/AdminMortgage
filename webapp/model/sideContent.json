@@ -1,0 +1,27 @@
+{
+	"navigation": [{
+		"title": "Trang chủ",
+		"icon": "sap-icon://home",
+		"expanded": true,
+		"key": "home",
+		"items": []
+	}, {
+		"title": "Cửa hàng",
+		"icon": "sap-icon://retail-store",
+		"expanded": false,
+		"key": "shopManager",
+		"items": []
+	}, {
+		"title": "Người dùng",
+		"icon": "sap-icon://leads",
+		"expanded": false,
+		"key": "userManager",
+		"items": []
+	}, {
+		"title": "Danh mục",
+		"icon": "sap-icon://checklist",
+		"expanded": false,
+		"key": "categoryManager",
+		"items": []
+	}]
+}

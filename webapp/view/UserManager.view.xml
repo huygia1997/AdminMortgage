@@ -1,0 +1,58 @@
+<mvc:View controllerName="sap.ui.demo.toolpageapp.controller.UserManager" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page showHeader="false">
+		<content>
+			<PullToRefresh visible="{device>/support/touch}" refresh="onRefresh"/>
+			<Table fixedLayout="false" popinLayout="GridSmall" alternateRowColors="true" inset="{= !${device>/support/touch}}"
+				items="{path: 'oModelUser>/results', sorter: {path: 'oModelUser>role/id', descending: false }}" id="ListUser">
+				<headerToolbar>
+					<Toolbar>
+						<content>
+							<Title level="H2" text="{i18n>title_user}"/>
+							<ToolbarSpacer/>
+							<!--<Button icon="sap-icon://add" text="{i18n>btn_create_transaction}" press="onCreateTransaction"/>-->
+							<SearchField width="50%" search="onFilterUserName" />
+						</content>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column>
+						<Label wrapping="true" textAlign="Center" wrappingType="Hyphenated" text="{i18n>lb_id}"/>
+					</Column>
+					<Column>
+						<Label wrapping="true" textAlign="Center" wrappingType="Hyphenated" text="{i18n>lb_avatar}"/>
+					</Column>
+					<Column>
+						<Label wrapping="true" textAlign="Center" wrappingType="Hyphenated" text="{i18n>lb_name}"/>
+					</Column>
+					<Column>
+						<Label wrapping="true" textAlign="Center" wrappingType="Hyphenated" text="{i18n>lb_address}"/>
+					</Column>
+					<Column>
+						<Label wrapping="true" textAlign="Center" wrappingType="Hyphenated" text="{i18n>lb_email}"/>
+					</Column>
+					<Column>
+						<Label wrapping="true" textAlign="Center" wrappingType="Hyphenated" text="{i18n>lb_phone}"/>
+					</Column>
+					<Column>
+						<Label wrapping="true" textAlign="Center" wrappingType="Hyphenated" text="{i18n>lb_role}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem press="onUserDetailPress" type="Active">
+						<cells>
+							<Text text="{oModelUser>accountId}"/>
+							<Image src="{oModelUser>avaURL}" class="image_User"/>
+							<Title text="{oModelUser>name}"/>
+							<Text text="{oModelUser>address}"/>
+							<Text text="{oModelUser>email}"/>
+							<Text text="{oModelUser>phoneNumber}"/>
+							<ObjectStatus text="{ path: 'oModelUser>role/id', formatter: '.formatter.roleUser' }"
+								state="{ path: 'oModelUser>role/id', formatter: '.formatter.roleUserState' }"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Page>
+</mvc:View>

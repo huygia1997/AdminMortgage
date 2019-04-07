@@ -1,0 +1,103 @@
+.listCate ul {
+    display: inline-block;
+    width: 90%;
+    margin: 0 auto;
+}
+.listCate ul li {
+    text-align: center;
+    display: inline-block;
+    width: 20%;
+    margin: 10px;
+}
+.cate_image {
+    width: 100%;
+}
+.box_cateInfo {
+    width: 100%;
+    padding-left: 20px;
+}
+.image_User {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.fragment_shopDetail {
+    display: block;
+    width: 100%;
+    padding: 10px;
+}
+.label_shopDetail {
+    width: 100px;
+}
+.itemOfShopDetail {
+    padding-bottom: 10px;
+}
+.sortList_container ul {
+    display: inline-block;
+    width: 100%;
+}
+.listCategory_fragment {
+    display: inline-block;
+    width: 70px;
+    text-align: center;
+    border: none;
+}
+.category_text {
+    font-size: 12px;
+    white-space: normal;
+}
+.btn_active_shop {
+    background-color: #2b7c2b;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+.btn_active_shop .sapMBtnInner {
+    background: #2b7c2b;
+    border: none;
+}
+.btn_active_shop:hover>.sapMBtnHoverable {
+    background: #2b7c2b;
+    border: none;
+}
+.btn_active_shop bdi {
+	color: #fff;
+}
+.btn_unactive_shop {
+    background-color: #bb0000;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+.btn_unactive_shop .sapMBtnInner {
+    background: #bb0000;
+    border: none;
+}
+.btn_unactive_shop:hover>.sapMBtnHoverable {
+    background: #bb0000;
+    border: none;
+}
+.btn_unactive_shop bdi {
+	color: #fff;
+}
+.itemFavorite_container ul {
+	display: inline-block;
+	width: 100%;
+}
+.itemFavorite_container ul li {
+	display: inline-block;
+	width: 20%;
+	padding: 10px;
+	border: none;
+}
+.itemFavorite_image {
+	width: 100%;
+	border-radius: 10px;
+}
+.lb_itemFavorite {
+	margin-right: 10px
+}
+.title_itemFa {
+	white-space: normal;
+}
+.margin {
+	margin: 10px;
+}

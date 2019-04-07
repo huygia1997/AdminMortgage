@@ -1,0 +1,80 @@
+<core:FragmentDefinition xmlns:core='sap.ui.core' xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:fb="sap.ui.comp.filterbar">
+	<Dialog title="{i18n>title_userDetail}" afterClose="dialogAfterclose" xmlns:u="sap.ui.unified">
+		<content>
+			<IconTabBar selectedKey="1" expandable="false" expanded="true" id="idIconTabBarSeparatorNoIcon" class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter key="1" text="{i18n>info_user}">
+						<VBox class="fragment_shopDetail">
+							<VBox class="itemOfShopDetail">
+								<Label text="{i18n>lb_becomeAdmin}" />
+								<Button text="{i18n>btn_becomeAdmin}" press="onActiveRoleAdmin" class="btn_active_shop margin"/>
+							</VBox>
+							<HBox class="itemOfShopDetail">
+								<Label text="{i18n>lb_cateImage}" class="label_shopDetail"/>
+								<Image src="{listResult>/avaURL}" class="image_User"/>
+							</HBox>
+							<HBox class="itemOfShopDetail">
+								<Label text="{i18n>lb_name}" class="label_shopDetail"/>
+								<Title text="{listResult>/name}"/>
+							</HBox>
+							<HBox class="itemOfShopDetail">
+								<Label text="{i18n>lb_phone}" class="label_shopDetail"/>
+								<Title text="{listResult>/phoneNumber}"/>
+							</HBox>
+							<HBox class="itemOfShopDetail">
+								<Label text="{i18n>lb_address}" class="label_shopDetail"/>
+								<Title text="{listResult>/address}"/>
+							</HBox>
+							<HBox class="itemOfShopDetail">
+								<Label text="{i18n>lb_email}" class="label_shopDetail"/>
+								<Title text="{listResult>/email}"/>
+							</HBox>
+							<HBox class="itemOfShopDetail">
+								<Label text="{i18n>lb_role}" class="label_shopDetail"/>
+								<ObjectStatus text="{ path: 'listResult>role/id', formatter: '.formatter.roleUser' }"
+								state="{ path: 'listResult>role/id', formatter: '.formatter.roleUserState' }"/>
+							</HBox>
+						</VBox>
+					</IconTabFilter>
+					<IconTabSeparator icon=""/>
+					<IconTabFilter key="2" text="{i18n>tab_favoriteItem}">
+						<List id="ListItem" items="{oModelItem>/results}" class="itemFavorite_container">
+							<CustomListItem>
+								<VBox>
+									<Image src="{oModelItem>picUrl}" class="itemFavorite_image"/>
+									<HBox class="itemUserDetail">
+										<Title text="{oModelItem>itemName}" class="title_itemFa"/>
+									</HBox>
+									<HBox class="itemUserDetail">
+										<Title text="{oModelItem>price} VNĐ" class="title_itemFa"/>
+									</HBox>
+								</VBox>
+							</CustomListItem>
+						</List>
+					</IconTabFilter>
+					<IconTabSeparator icon=""/>
+					<IconTabFilter key="3" text="{i18n>tab_favoriteShop}">
+						<List id="ListShop" items="{oModelShop>/results}" class="itemFavorite_container">
+							<CustomListItem>
+								<VBox>
+									<Image src="{oModelShop>avatarUrl}" class="itemFavorite_image"/>
+									<HBox>
+										<Title text="{oModelShop>shopName}"/>
+									</HBox>
+									<HBox>
+										<RatingIndicator id="RI_default" maxValue="5" 
+											class="sapUiSmallMarginBottom fixCenter customTextShop" value="{oModelShop>rating}"
+											tooltip="Rating Tooltip" displayOnly="true"/>
+									</HBox>
+								</VBox>
+							</CustomListItem>
+						</List>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+		<endButton>
+			<Button text="Close" press="onDialogClose" type="Accept"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

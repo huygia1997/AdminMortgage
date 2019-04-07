@@ -1,0 +1,58 @@
+<mvc:View controllerName="sap.ui.demo.toolpageapp.controller.ShopManager" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page showHeader="false">
+		<content>
+			<PullToRefresh visible="{device>/support/touch}" refresh="onRefresh"/>
+			<Table id="ListShop" fixedLayout="false" popinLayout="GridSmall" alternateRowColors="true" inset="{= !${device>/support/touch}}"
+				items="{oModelShop>/results}">
+				<headerToolbar>
+					<Toolbar>
+						<content>
+							<Title level="H2" text="{i18n>title_store}"/>
+							<ToolbarSpacer/>
+							<!--<Button icon="sap-icon://add" text="{i18n>btn_create_transaction}" press="onCreateTransaction"/>-->
+							<SearchField width="50%" search="onFilterShopName" />
+						</content>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column>
+						<Label wrapping="true" textAlign="Center" wrappingType="Hyphenated" text="{i18n>lb_id}"/>
+					</Column>
+					<Column>
+						<Label wrapping="true" textAlign="Center" wrappingType="Hyphenated" text="{i18n>lb_avatar}"/>
+					</Column>
+					<Column>
+						<Label wrapping="true" textAlign="Center" wrappingType="Hyphenated" text="{i18n>lb_shopName}"/>
+					</Column>
+					<Column>
+						<Label wrapping="true" textAlign="Center" wrappingType="Hyphenated" text="{i18n>lb_phone}"/>
+					</Column>
+					<Column>
+						<Label wrapping="true" textAlign="Center" wrappingType="Hyphenated" text="{i18n>lb_address}"/>
+					</Column>
+					<Column>
+						<Label wrapping="true" textAlign="Center" wrappingType="Hyphenated" text="{i18n>lb_email}"/>
+					</Column>
+					<Column>
+						<Label wrapping="true" textAlign="Center" wrappingType="Hyphenated" text="{i18n>lb_status}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem press="onShopDetail" type="Active">
+						<cells>
+							<Title text="{oModelShop>id}"/>
+							<Image src="{oModelShop>avatarUrl}" class="image_User"/>
+							<Title text="{oModelShop>shopName}"/>
+							<Title text="{oModelShop>phoneNumber}"/>
+							<Title text="{oModelShop>address/fullAddress}"/>
+							<Title text="{oModelShop>email}"/>
+							<ObjectStatus text="{ path: 'oModelShop>status', formatter: '.formatter.shopStatusDesc' }"
+								state="{ path: 'oModelShop>status', formatter: '.formatter.shopStatusState' }"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Page>
+</mvc:View>

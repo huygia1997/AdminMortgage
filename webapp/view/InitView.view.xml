@@ -1,0 +1,3 @@
+<mvc:View controllerName="sap.ui.demo.toolpageapp.controller.InitView" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+    <App mobileWebAppCapable="true"  id="rootApp"/>
+</mvc:View>
