@@ -27,16 +27,31 @@ sap.ui.define([
 		},
 
 		_onRouteMatched: function() {
-			this.getAllStore();
+			this.getAllStore(0);
+			this.getStatusShop();
 		},
 
-		getAllStore: function() {
+		getAllStore: function(keyStatus) {
 			var oModelShop = new JSONModel();
 			var getdata = models.getAllShop();
 			if (getdata) {
-				oModelShop.setData({
-					results: getdata
-				});
+				if (keyStatus == 0) {
+					oModelShop.setData({
+						results: getdata
+					});
+				} else {
+					var arrSort = [];
+					for (var i = 0; i < getdata.length; i++) {
+						var status = getdata[i].status;
+						if (keyStatus == status) {
+							arrSort.push(getdata[i]);
+						}
+					}
+					oModelShop.setData({
+						results: arrSort
+					});
+				}
+
 			}
 			this.setModel(oModelShop, "oModelShop");
 		},
@@ -87,7 +102,7 @@ sap.ui.define([
 					MessageBox.error("Lỗi hệ thống!");
 				}
 			}
-			this.getAllStore();
+			this.getAllStore(0);
 		},
 
 		onUnActiveShop: function() {
@@ -104,10 +119,10 @@ sap.ui.define([
 					MessageBox.error("Lỗi hệ thống!");
 				}
 			}
-			this.getAllStore();
+			this.getAllStore(0);
 		},
-		
-		onFilterShopName: function(oEvent) { 
+
+		onFilterShopName: function(oEvent) {
 			// build filter array
 			var aFilter = [];
 			var sQuery = oEvent.getParameter("query");
@@ -119,6 +134,22 @@ sap.ui.define([
 			var oList = this.getView().byId("ListShop");
 			var oBinding = oList.getBinding("items");
 			oBinding.filter(aFilter);
+		},
+
+		getStatusShop: function() {
+			var oModelStatus = new JSONModel();
+			var dataRole = models.getStatusShop();
+			if (dataRole) {
+				oModelStatus.setData({
+					results: dataRole
+				});
+			}
+			this.setModel(oModelStatus, "oModelStatus");
+		},
+
+		onChangeStatus: function() {
+			var keyStatus = this.getView().byId("filterStatus").getSelectedItem().getKey();
+			this.getAllStore(keyStatus);
 		}
 	});
 });

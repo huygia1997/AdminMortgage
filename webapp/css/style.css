@@ -60,7 +60,7 @@
     border: none;
 }
 .btn_active_shop bdi {
-	color: #fff;
+    color: #fff;
 }
 .btn_unactive_shop {
     background-color: #bb0000;
@@ -76,28 +76,55 @@
     border: none;
 }
 .btn_unactive_shop bdi {
-	color: #fff;
+    color: #fff;
 }
 .itemFavorite_container ul {
-	display: inline-block;
-	width: 100%;
+    display: inline-block;
+    width: 100%;
 }
 .itemFavorite_container ul li {
-	display: inline-block;
-	width: 20%;
-	padding: 10px;
-	border: none;
+    display: inline-block;
+    width: 20%;
+    padding: 10px;
+    border: none;
 }
 .itemFavorite_image {
-	width: 100%;
-	border-radius: 10px;
+    width: 100%;
+    border-radius: 10px;
 }
 .lb_itemFavorite {
-	margin-right: 10px
+    margin-right: 10px
 }
 .title_itemFa {
-	white-space: normal;
+    white-space: normal;
 }
 .margin {
-	margin: 10px;
+    margin: 10px;
+}
+.box_createCateImg {
+    display: inline-block;
+    width: 300px;
+    margin: 0 auto;
+}
+.img_cate {
+    width: 100%;
+}
+.btn_uploadFile {
+    text-align: center;
+}
+.btn_createNewCate {
+    background-color: #2b7c2b;
+    border-radius: 5px;
+    margin: 10px;
+}
+.btn_createNewCate .sapMBtnInner {
+    background: #2b7c2b;
+    border: none;
+}
+.btn_createNewCate:hover>.sapMBtnHoverable {
+    background: #2b7c2b;
+    border: none;
+}
+.btn_createNewCate bdi {
+    color: #fff;
 }

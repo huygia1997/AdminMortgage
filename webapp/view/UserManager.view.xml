@@ -1,5 +1,5 @@
 <mvc:View controllerName="sap.ui.demo.toolpageapp.controller.UserManager" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
-	xmlns:mvc="sap.ui.core.mvc">
+	xmlns:mvc="sap.ui.core.mvc" xmlns:fb="sap.ui.comp.filterbar">
 	<Page showHeader="false">
 		<content>
 			<PullToRefresh visible="{device>/support/touch}" refresh="onRefresh"/>
@@ -11,7 +11,11 @@
 							<Title level="H2" text="{i18n>title_user}"/>
 							<ToolbarSpacer/>
 							<!--<Button icon="sap-icon://add" text="{i18n>btn_create_transaction}" press="onCreateTransaction"/>-->
-							<SearchField width="50%" search="onFilterUserName" />
+							<SearchField width="50%" search="onFilterUserName"/>
+							<Select change="onChangeRole" selectItemId="{oModelRole>roleId}" id="filterRole"
+								items="{ path: 'oModelRole>/results', templateShareable: false }">
+									<core:Item key="{oModelRole>roleId}" text="{oModelRole>roleName}"/>
+							</Select>
 						</content>
 					</Toolbar>
 				</headerToolbar>

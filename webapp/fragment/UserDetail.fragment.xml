@@ -31,8 +31,8 @@
 							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_role}" class="label_shopDetail"/>
-								<ObjectStatus text="{ path: 'listResult>role/id', formatter: '.formatter.roleUser' }"
-								state="{ path: 'listResult>role/id', formatter: '.formatter.roleUserState' }"/>
+								<ObjectStatus text="{ path: 'listResult>/role/id', formatter: '.formatter.roleUser' }"
+								state="{ path: 'listResult>/role/id', formatter: '.formatter.roleUserState' }"/>
 							</HBox>
 						</VBox>
 					</IconTabFilter>

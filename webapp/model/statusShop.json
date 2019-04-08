@@ -1,0 +1,13 @@
+[{
+	"statusName": "Tất cả",
+	"status": 0
+},{
+	"statusName": "Chờ đăng kí",
+	"status": 1
+},{
+	"statusName": "Đang hoạt động",
+	"status": 2
+},{
+	"statusName": "Ngưng hoạt động",
+	"status": 3
+}]

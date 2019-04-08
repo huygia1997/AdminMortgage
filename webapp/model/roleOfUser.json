@@ -1,0 +1,13 @@
+[{
+	"roleName": "Tất cả",
+	"roleId": 1
+},{
+	"roleName": "Khách hàng",
+	"roleId": 2
+}, {
+	"roleName": "Cửa hàng",
+	"roleId": 3
+}, {
+	"roleName": "Quản trị viên",
+	"roleId": 4
+}]

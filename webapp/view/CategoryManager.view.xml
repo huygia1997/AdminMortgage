@@ -26,7 +26,7 @@
 					</Column>
 				</columns>
 				<items>
-					<ColumnListItem press="onTransDetailPress" type="Active">
+					<ColumnListItem press="onCateDetailPress" type="Active">
 						<cells>
 							<Text text="{oModelCate>id}"/>
 							<Image src="{oModelCate>iconUrl}" width="50px"/>

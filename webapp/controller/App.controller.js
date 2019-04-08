@@ -69,6 +69,12 @@ sap.ui.define([
 					this._bExpanded = (oDevice.name === "Desktop");
 				}
 			}.bind(this));
+			this.getAccountLocalStorage();
+		},
+		
+		getAccountLocalStorage: function() {
+			var username = localStorage.getItem("username");
+			this.getGlobalModel().setProperty("/username", username);
 		},
 
 		/**

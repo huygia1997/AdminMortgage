@@ -27,16 +27,32 @@ sap.ui.define([
 		},
 
 		_onRouteMatched: function() {
-			this.getAllUser();
+			this.getListUser(1);
+			this.getRolesOfUser();
 		},
 
-		getAllUser: function() {
+		getListUser: function(keyRole) {
 			var data = models.getAllUser();
 			if (data) {
 				var oModelUser = new JSONModel();
-				oModelUser.setData({
-					results: data
-				});
+				if (keyRole == 1) {
+					oModelUser.setData({
+						results: data
+					});
+				} else {
+					var arrSort = [];
+					for (var i = 0; i < data.length; i++) {
+						var role = data[i].role;
+						var roleId = role.id;
+						if (keyRole == roleId) {
+							arrSort.push(data[i]);
+						}
+					}
+					oModelUser.setData({
+						results: arrSort
+					});
+				}
+
 				this.setModel(oModelUser, "oModelUser");
 			}
 		},
@@ -87,8 +103,8 @@ sap.ui.define([
 			}
 			this.getAllUser();
 		},
-		
-		onFilterUserName: function(oEvent) { 
+
+		onFilterUserName: function(oEvent) {
 			// build filter array
 			var aFilter = [];
 			var sQuery = oEvent.getParameter("query");
@@ -100,6 +116,22 @@ sap.ui.define([
 			var oList = this.getView().byId("ListUser");
 			var oBinding = oList.getBinding("items");
 			oBinding.filter(aFilter);
+		},
+
+		getRolesOfUser: function() {
+			var oModelRole = new JSONModel();
+			var dataRole = models.getRoleOfUser();
+			if (dataRole) {
+				oModelRole.setData({
+					results: dataRole
+				});
+			}
+			this.setModel(oModelRole, "oModelRole");
+		},
+
+		onChangeRole: function() {
+			var keyRole = this.getView().byId("filterRole").getSelectedItem().getKey();
+			this.getListUser(keyRole);
 		}
 	});
 });

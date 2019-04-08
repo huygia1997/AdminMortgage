@@ -26,9 +26,11 @@ sap.ui.define([
 		onLoginPressed: function() {
 			var emailValue = this.getView().byId("_txtUsername").getValue();
 			var checkEmail = this.validateEmailGlobal(emailValue);
-			var loginModel = this.getModel("loginModel");
-			var username = loginModel.getProperty("/username");
-			var password = loginModel.getProperty("/password");
+			// var loginModel = this.getModel("loginModel");
+			var username = this.getView().byId("_txtUsername").getValue();
+			var password = this.getView().byId("_txtPassword").getValue();
+			// var username = loginModel.getProperty("/username");
+			// var password = loginModel.getProperty("/password");
 			// 
 			if (username === "" || password === "") {
 				this.getView().byId("_txtUsername").setValueState(sap.ui.core.ValueState.Error);
@@ -44,12 +46,11 @@ sap.ui.define([
 					localStorage.setItem("isLogging", false);
 					MessageBox.error("Email hoặc Mật khẩu không đúng!");
 				} else if (dataLogin.role.id === 4) {
-					this.getGlobalModel().setProperty("/accountId", dataLogin.id);
-					this.getGlobalModel().setProperty("/username", dataLogin.username);
-					this.getGlobalModel().setProperty("/roleId", dataLogin.role);
-					this.getGlobalModel().setProperty("/password", dataLogin.password);
-					
-					console.log(this.getGlobalModel());
+					// this.getGlobalModel().setProperty("/accountId", dataLogin.id);
+					// this.getGlobalModel().setProperty("/username", dataLogin.username);
+					// this.getGlobalModel().setProperty("/roleId", dataLogin.role);
+					// this.getGlobalModel().setProperty("/password", dataLogin.password);
+					this.setAccountUser(dataLogin.username, dataLogin.id, dataLogin.role, dataLogin.password);
 
 					//save_login to LocalStorage
 					localStorage.setItem("username", dataLogin.username);

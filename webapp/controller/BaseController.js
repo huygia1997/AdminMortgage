@@ -172,6 +172,20 @@ sap.ui.define([
 				this.getGlobalModel().setProperty("/accountId", uid);
 				this.getGlobalModel().setProperty("/username", email);
 			}
+		},
+
+		setAccountUser: function(username, uid, roleId, password) {
+			this.getGlobalModel().setProperty("/accountId", uid);
+			this.getGlobalModel().setProperty("/username", username);
+			this.getGlobalModel().setProperty("/roleId", roleId);
+			this.getGlobalModel().setProperty("/password", password);
+		},
+		
+		getAccoutUser: function() {
+			this.getGlobalModel().getProperty("/accountId");
+			this.getGlobalModel().getProperty("/username");
+			this.getGlobalModel().getProperty("/roleId");
+			this.getGlobalModel().getProperty("/password");
 		}
 	});
 
