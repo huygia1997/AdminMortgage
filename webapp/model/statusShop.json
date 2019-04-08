@@ -10,4 +10,7 @@
 },{
 	"statusName": "Ngưng hoạt động",
 	"status": 3
+},{
+	"statusName": "Cửa hàng hệ thống tạo",
+	"status": 5
 }]

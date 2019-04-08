@@ -28,6 +28,7 @@
 }
 .label_shopDetail {
     width: 100px;
+    margin-top: 10px;
 }
 .itemOfShopDetail {
     padding-bottom: 10px;
@@ -127,4 +128,10 @@
 }
 .btn_createNewCate bdi {
     color: #fff;
+}
+.input_updateShop {
+	height: 30px;
+}
+.title_shopDetail {
+	margin-top: 10px;
 }

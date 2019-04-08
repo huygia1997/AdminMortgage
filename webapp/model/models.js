@@ -296,6 +296,26 @@ sap.ui.define([
 
 			});
 			return data;
+		},
+
+		changeOwnShop: function(shopId, email) {
+			var data;
+			var url = serverInfo.url + "/thay-doi-quyen-so-huu?shopId=" + shopId + "&email=" + email;
+			$.ajax({
+				type: "GET",
+				url: url,
+				context: this,
+				dataType: 'json',
+				async: false,
+				success: function(d, r, xhr) {
+					data = r;
+				},
+				error: function(e) {
+					data = e;
+				}
+
+			});
+			return data;
 		}
 	};
 

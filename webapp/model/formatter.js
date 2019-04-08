@@ -31,6 +31,8 @@ sap.ui.define([
 					return i18n.getText("ACTIVE");
 				case 3:
 					return i18n.getText("BANNED");
+				case 5:
+					return i18n.getText("ADMIN");
 				default:
 					return "";
 			}
@@ -44,6 +46,8 @@ sap.ui.define([
 					return ValueState.Success;
 				case 3:
 					return ValueState.Error;
+				case 5:
+					return ValueState.None;
 			}
 		},
 
@@ -60,7 +64,7 @@ sap.ui.define([
 					return "";
 			}
 		},
-		
+
 		roleUserState: function(sStatus) {
 			switch (sStatus) {
 				case 4:
