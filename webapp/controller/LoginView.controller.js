@@ -56,7 +56,7 @@ sap.ui.define([
 					localStorage.setItem("username", dataLogin.username);
 					localStorage.setItem("uid", dataLogin.id);
 
-					this.getRouter().navTo("home");
+					this.getRouter().navTo("shopManager");
 				} else {
 					MessageBox.error("Đăng nhập thất bại!");
 				}

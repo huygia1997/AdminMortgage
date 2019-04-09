@@ -316,6 +316,65 @@ sap.ui.define([
 
 			});
 			return data;
+		},
+
+		updateShopDetail: function(data) {
+			var check;
+			var url = serverInfo.url + "/thay-doi-thong-tin-cua-hang";
+			$.ajax({
+				type: "PUT",
+				url: url,
+				data: data,
+				context: this,
+				dataType: 'json',
+				async: false,
+				success: function(d, r, xhr) {
+					check = r;
+				},
+				error: function(e) {
+					check = e;
+				}
+
+			});
+			return check;
+		},
+
+		getDataCity: function() {
+			var data;
+			var url = serverInfo.localUrl + "/dataLocation.json";
+			$.ajax({
+				type: "GET",
+				url: url,
+				context: this,
+				dataType: 'json',
+				async: false,
+				success: function(d, r, xhr) {
+					data = d;
+				},
+				error: function(e) {
+					data = e;
+				}
+			});
+			return data;
+		},
+
+		getDataDistrict: function() {
+			var data;
+			var url = serverInfo.localUrl + "/dataDistrisct.json";
+			$.ajax({
+				type: "GET",
+				url: url,
+				context: this,
+				dataType: 'json',
+				async: false,
+				success: function(d, r, xhr) {
+					data = d;
+				},
+				error: function(e) {
+					data = e;
+				}
+			});
+			return data;
 		}
 	};
 

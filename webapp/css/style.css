@@ -20,10 +20,11 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    margin-right: 5px;
 }
 .fragment_shopDetail {
     display: block;
-    width: 100%;
+    width: 400px;
     padding: 10px;
 }
 .label_shopDetail {
@@ -134,4 +135,12 @@
 }
 .title_shopDetail {
 	margin-top: 10px;
+}
+.selectbox_filter {
+	width: 181px !important;
+}
+.custom-map-register {
+	display: inline-block;
+	width: 100%;
+	height: 300px;
 }

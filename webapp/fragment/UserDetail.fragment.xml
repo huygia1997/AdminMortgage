@@ -15,24 +15,24 @@
 							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_name}" class="label_shopDetail"/>
-								<Title text="{listResult>/name}"/>
+								<Title text="{listResult>/name}" class="title_shopDetail"/>
 							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_phone}" class="label_shopDetail"/>
-								<Title text="{listResult>/phoneNumber}"/>
+								<Title text="{listResult>/phoneNumber}" class="title_shopDetail"/>
 							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_address}" class="label_shopDetail"/>
-								<Title text="{listResult>/address}"/>
+								<Title text="{listResult>/address}" class="title_shopDetail"/>
 							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_email}" class="label_shopDetail"/>
-								<Title text="{listResult>/email}"/>
+								<Title text="{listResult>/email}" class="title_shopDetail"/>
 							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_role}" class="label_shopDetail"/>
 								<ObjectStatus text="{ path: 'listResult>/role/id', formatter: '.formatter.roleUser' }"
-								state="{ path: 'listResult>/role/id', formatter: '.formatter.roleUserState' }"/>
+								state="{ path: 'listResult>/role/id', formatter: '.formatter.roleUserState' }" class="title_shopDetail"/>
 							</HBox>
 						</VBox>
 					</IconTabFilter>

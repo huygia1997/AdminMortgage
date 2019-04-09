@@ -111,8 +111,8 @@ sap.ui.define([
 		},
 
 		onCreateNewCate: function() {
-			var cateName = this.getView().byId("input_cate").getValue();
-			var getImg = this.getView().byId("img_cate").getSrc();
+			var cateName = this.getView().byId("input_cateCreate").getValue();
+			var getImg = this.getView().byId("img_cateCreate").getSrc();
 			var check = models.createNewCategory(cateName, getImg);
 			if (check === "success") {
 				MessageBox.success("Tạo danh mục mới thành công!");

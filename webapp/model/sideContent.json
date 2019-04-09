@@ -1,11 +1,5 @@
 {
 	"navigation": [{
-		"title": "Trang chủ",
-		"icon": "sap-icon://home",
-		"expanded": true,
-		"key": "home",
-		"items": []
-	}, {
 		"title": "Cửa hàng",
 		"icon": "sap-icon://retail-store",
 		"expanded": false,

@@ -9,6 +9,7 @@ sap.ui.define([
 	"sap/ui/model/FilterOperator"
 ], function(BaseController, JSONModel, Device, formatter, models, MessageBox, Filter, FilterOperator) {
 	"use strict";
+	var gMap;
 	return BaseController.extend("sap.ui.demo.toolpageapp.controller.ShopManager", {
 		formatter: formatter,
 
@@ -18,6 +19,10 @@ sap.ui.define([
 			var oViewModel = new JSONModel({
 				isPhone: Device.system.phone
 			});
+
+			var oModel = new sap.ui.model.json.JSONModel();
+			this.setModel(oModel, "dataCity");
+
 			this.setModel(oViewModel, "view");
 			Device.media.attachHandler(function(oDevice) {
 				this.getModel("view").setProperty("/isPhone", oDevice.name === "Phone");
@@ -83,9 +88,21 @@ sap.ui.define([
 					results: getCate
 				});
 				this._detailShopDialog.setModel(oModelCate, "oModelCate");
+
 				//Set models which is belonged to View to Fragment
 				this.getView().addDependent(this._detailShopDialog);
+				this.getDataCity();
 				this._detailShopDialog.open();
+				//set map
+				this.getView().byId("map_canvas").addStyleClass("myMap");
+				var mapOptions = {
+					center: new google.maps.LatLng(0, 0),
+					zoom: 10,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+				var getDomRef = this.getView().byId("map_canvas").getDomRef();
+				gMap = new google.maps.Map(getDomRef, mapOptions);
+				this.setLocation();
 			}
 		},
 
@@ -155,6 +172,33 @@ sap.ui.define([
 			this.getAllStore(keyStatus);
 		},
 
+		onUpdateShopDetail: function() {
+			var shopDetail = this._detailShopDialog.getModel("listResult").getData();
+			var data = {
+				shopId: shopDetail.id,
+				shopName: shopDetail.shopName,
+				facebook: shopDetail.facebook,
+				email: shopDetail.email,
+				phoneNumber: shopDetail.phoneNumber,
+				addressId: shopDetail.addressId,
+				districtId: shopDetail.districtId,
+				policy: shopDetail.policy,
+				address: shopDetail.fullAddress,
+				longtitude: shopDetail.longtitude,
+				latitude: shopDetail.latitude,
+				avaUrl: shopDetail.avaUrl,
+				status: shopDetail.status
+			};
+			var check = models.updateShopDetail(data);
+			if (check === "success") {
+				MessageBox.success("Cập nhật thành công!");
+				this.getAllStore(0);
+				this._detailShopDialog.close();
+			} else {
+				MessageBox.error("Cập nhật không thành công!");
+			}
+		},
+
 		onUploadPress: function(oEvt) {
 			var that = this;
 			var oFileUploader = oEvt.getSource();
@@ -217,6 +261,126 @@ sap.ui.define([
 			xhr.setRequestHeader("Authorization", "Bearer 5c25e781ffc7f495059078408c311799e277d70e"); //"application/x-www-form-urlencoded");
 			var data = base64string;
 			xhr.send(data);
+		},
+
+		getDataCity: function() {
+			//get data city
+			var dataCiti = models.getDataCity();
+			if (dataCiti) {
+				var oModelCiti = this.getModel("dataCity");
+
+				oModelCiti.setProperty("/results", dataCiti);
+				oModelCiti.setProperty("/selectedCity", dataCiti[0].id);
+				oModelCiti.updateBindings();
+			}
+			//get data district
+			var dataDistrict = models.getDataDistrict();
+			if (dataDistrict) {
+				var dataDis = [];
+				for (var i = 0; i < dataDistrict.length; i++) {
+					dataDis.push(dataDistrict[i]);
+				}
+
+				var oModelDis = new JSONModel();
+				oModelDis.setData({
+					results: dataDis
+				});
+				this.setModel(oModelDis, "dataDis");
+				this.onChangeCity();
+			}
+		},
+
+		onChangeCity: function() {
+			var cityModel = this.getModel("dataCity");
+			if (cityModel) {
+				// var cityContext = this.getView().byId("filterCity").getSelectedItem().getKey();
+				var keyCity = cityModel.getProperty("/selectedCity");
+				this.getDistrictByCity(keyCity);
+			}
+		},
+
+		getDistrictByCity: function(cityId) {
+			var filters = [];
+			var cityIdFilter = new sap.ui.model.Filter({
+				path: "cityId",
+				operator: "EQ",
+				value1: cityId
+			});
+			filters.push(cityIdFilter);
+			this.byId("filterDistrict").getBinding("items").filter(filters);
+		},
+
+		getLocationFromInput: function() {
+			var that = this;
+			var getModel = this._detailShopDialog.getModel("listResult");
+			var getAddress = getModel.getProperty("/fullAddress");
+			var geocoder = new google.maps.Geocoder();
+			geocoder.geocode({
+				'address': getAddress
+			}, function(results, status) {
+				if (status === 'OK') {
+					gMap.setCenter(results[0].geometry.location);
+					var marker = new google.maps.Marker({
+						map: gMap,
+						position: results[0].geometry.location,
+						draggable: true
+					});
+					that.getLatLng(marker);
+				} else {
+					MessageBox.error("Địa chỉ bạn nhập chưa đúng!");
+				}
+			});
+		},
+		
+		getLatLng: function(marker) {
+			google.maps.event.addListener(marker, 'dragend', function(marker) {
+				var latLng = marker.latLng;
+				var currentLatitude = latLng.lat();
+				var currentLongitude = latLng.lng();
+				console.log(currentLatitude, currentLongitude);
+				this._detailShopDialog.getModel("listResult").setProperty("/latitude", currentLatitude);
+				this._detailShopDialog.getModel("listResult").setProperty("/longtitude", currentLongitude);
+			});
+		},
+
+		setLocation: function() {
+			var lat = this._detailShopDialog.getModel("listResult").getProperty("/latitude");
+			var lng = this._detailShopDialog.getModel("listResult").getProperty("/longtitude");
+			var latLong = new google.maps.LatLng(lat, lng);
+			var myEmail = this.getGlobalModel().getProperty("/username");
+			var content = "<h3>" + myEmail + "</h3>";
+
+			console.log(content);
+			var marker = new google.maps.Marker({
+				position: latLong,
+				map: gMap,
+				draggable: true,
+			});
+			var infowindow = new google.maps.InfoWindow({
+				content: content
+			});
+			marker.addListener('click', function() {
+				infowindow.open(gMap, marker);
+			});
+			google.maps.event.addListener(marker, 'dragend', function(marker) {
+				var latLng = marker.latLng;
+				var currentLatitude = latLng.lat();
+				var currentLongitude = latLng.lng();
+				// console.log(currentLatitude, currentLongitude);
+			});
+			marker.setMap(gMap);
+
+			gMap.setZoom(15);
+			gMap.setCenter(marker.getPosition());
+		},
+
+		checkEmail: function() {
+			var getValue = this.getView().byId("input_checkEmail").getValue();
+			console.log(getValue);
+		},
+
+		onAfterRendering: function() {
+
 		}
 	});
 });
