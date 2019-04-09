@@ -16,6 +16,9 @@ sap.ui.define([
 		onInit: function() {
 			var oRouter = this.getRouter();
 
+			// check verify email
+			this.checkVerifyEmail = false;
+
 			var oViewModel = new JSONModel({
 				isPhone: Device.system.phone
 			});
@@ -331,7 +334,7 @@ sap.ui.define([
 				}
 			});
 		},
-		
+
 		getLatLng: function(marker) {
 			google.maps.event.addListener(marker, 'dragend', function(marker) {
 				var latLng = marker.latLng;
@@ -376,11 +379,35 @@ sap.ui.define([
 
 		checkEmail: function() {
 			var getValue = this.getView().byId("input_checkEmail").getValue();
-			console.log(getValue);
+			if (getValue !== "") {
+				var data = {
+					email: getValue
+				};
+				var check = models.checkEmail(data);
+				if (check === "success") {
+					MessageBox.success("Email được quyền chuyển thành Cửa hàng");
+					this.checkVerifyEmail = true;
+				} else {
+					MessageBox.error("Email không được quyền!");
+					this.checkVerifyEmail = false;
+				}
+			}
 		},
 
-		onAfterRendering: function() {
-
+		onChangeOwnShop: function() {
+			var check = this.checkVerifyEmail;
+			if (check === true) {
+				var shopId = this._detailShopDialog.getModel("listResult").getProperty("/id");
+				var email = this.getView().byId("input_checkEmail").getValue();
+				var change = models.changeOwnShop(shopId, email);
+				if(change === "success") {
+					MessageBox.success("Kích hoạt tài khoản thành chủ Cửa hàng thành công!");
+				} else {
+					MessageBox.error("Kích hoạt thất bại!");
+				}
+			} else {
+				MessageBox.error("Bạn phải kiểm tra Email trước khi chuyển quyền Cửa hàng!");
+			}
 		}
 	});
 });

@@ -375,6 +375,26 @@ sap.ui.define([
 				}
 			});
 			return data;
+		},
+		
+		checkEmail: function(data) {
+			var check;
+			var url = serverInfo.url + "/kiem-tra-tai-khoan";
+			$.ajax({
+				type: "POST",
+				url: url,
+				context: this,
+				data: data,
+				dataType: 'json',
+				async: false,
+				success: function(d, r, xhr) {
+					check = r;
+				},
+				error: function(e) {
+					check = e;
+				}
+			});
+			return check;
 		}
 	};
 

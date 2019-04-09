@@ -93,11 +93,14 @@
 					<IconTabSeparator icon=""/>
 					<IconTabFilter visible="{= ${listResult>/status} === 5}" key="2" text="{i18n>tab_changeOwnShop}">
 						<VBox class="fragment_shopDetail">
-							<HBox class="itemOfShopDetail">
-								<Label text="lb_email" />
-								<Input id="input_checkEmail" type="Email" />
-								<Button text="{i18n>check}" press="checkEmail" />
-							</HBox>
+							<VBox class="itemOfShopDetail">
+								<Label text="{i18n>lb_email}"/>
+								<HBox>
+									<Input id="input_checkEmail" type="Email"/>
+									<Button text="{i18n>check}" press="checkEmail" class="btn_checkEmail"/>
+								</HBox>
+								<Button text="{i18n>btn_changeOwnShop}" press="onChangeOwnShop" />
+							</VBox>
 						</VBox>
 					</IconTabFilter>
 				</items>
