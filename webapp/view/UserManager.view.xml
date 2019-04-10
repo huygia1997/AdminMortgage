@@ -14,7 +14,7 @@
 							<SearchField width="50%" search="onFilterUserName"/>
 							<Select change="onChangeRole" selectItemId="{oModelRole>roleId}" id="filterRole"
 								items="{ path: 'oModelRole>/results', templateShareable: false }">
-									<core:Item key="{oModelRole>roleId}" text="{oModelRole>roleName}"/>
+								<core:Item key="{oModelRole>roleId}" text="{oModelRole>roleName}"/>
 							</Select>
 						</content>
 					</Toolbar>
@@ -41,6 +41,9 @@
 					<Column>
 						<Label wrapping="true" textAlign="Center" wrappingType="Hyphenated" text="{i18n>lb_role}"/>
 					</Column>
+					<Column>
+						<Label wrapping="true" textAlign="Center" wrappingType="Hyphenated" text="{i18n>lb_status}"/>
+					</Column>
 				</columns>
 				<items>
 					<ColumnListItem press="onUserDetailPress" type="Active">
@@ -53,6 +56,8 @@
 							<Text text="{oModelUser>phoneNumber}"/>
 							<ObjectStatus text="{ path: 'oModelUser>role/id', formatter: '.formatter.roleUser' }"
 								state="{ path: 'oModelUser>role/id', formatter: '.formatter.roleUserState' }"/>
+							<ObjectStatus text="{ path: 'oModelUser>status', formatter: '.formatter.userStatusDesc' }"
+								state="{ path: 'oModelUser>status', formatter: '.formatter.userStatusState' }"/>
 						</cells>
 					</ColumnListItem>
 				</items>

@@ -94,14 +94,22 @@ sap.ui.define([
 
 		onActiveRoleAdmin: function() {
 			var roleAdmin = 4;
-			var email = this._detailUserDialog.getModel("listResult").getProperty("/email");
-			var changeRole = models.changeRoleOfUser(roleAdmin, email);
-			if (changeRole.role.id === 4) {
-				MessageBox.success("Thay đổi thành công!");
+			var getModel = this._detailUserDialog.getModel("listResult");
+			var getRole = getModel.getProperty("/role");
+			var role = getRole.id;
+			var email = getModel.getProperty("/email");
+			if (role !== roleAdmin) {
+				var changeRole = models.changeRoleOfUser(roleAdmin, email);
+				if (changeRole.role.id === 4) {
+					MessageBox.success("Thay đổi thành công!");
+					this.getListUser(1);
+					this._detailUserDialog.close();
+				} else {
+					MessageBox.error("Lỗi hệ thống!");
+				}
 			} else {
-				MessageBox.error("Lỗi hệ thống!");
+				MessageBox.error("Không thể thay đổi quyền hiện tại!");
 			}
-			this.getAllUser();
 		},
 
 		onFilterUserName: function(oEvent) {
@@ -132,6 +140,54 @@ sap.ui.define([
 		onChangeRole: function() {
 			var keyRole = this.getView().byId("filterRole").getSelectedItem().getKey();
 			this.getListUser(keyRole);
+		},
+
+		onBanUser: function() {
+			var roleAdmin = 4;
+			var getModel = this._detailUserDialog.getModel("listResult");
+			var getId = getModel.getProperty("/accountId");
+			var getRole = getModel.getProperty("/role");
+			var role = getRole.id;
+			if (role !== roleAdmin) {
+				var data = {
+					accountId: getId,
+					status: 3
+				};
+				var setRole = models.changeStatusOfUser(data);
+				if (setRole === "success") {
+					MessageBox.success("Thay đổi thành công!");
+					this.getListUser(1);
+					this._detailUserDialog.close();
+				} else {
+					MessageBox.error("Thay đổi không thành công!");
+				}
+			} else {
+				MessageBox.error("Không thể thay đổi trạng thái của Quản Trị Viên!");
+			}
+		},
+
+		onActiveUser: function() {
+			var roleAdmin = 4;
+			var getModel = this._detailUserDialog.getModel("listResult");
+			var getId = getModel.getProperty("/accountId");
+			var getRole = getModel.getProperty("/role");
+			var role = getRole.id;
+			if (role !== roleAdmin) {
+				var data = {
+					accountId: getId,
+					status: 1
+				};
+				var setRole = models.changeStatusOfUser(data);
+				if (setRole === "success") {
+					MessageBox.success("Thay đổi thành công!");
+					this.getListUser(1);
+					this._detailUserDialog.close();
+				} else {
+					MessageBox.error("Thay đổi không thành công!");
+				}
+			} else {
+				MessageBox.error("Không thể thay đổi trạng thái của Quản Trị Viên!");
+			}
 		}
 	});
 });

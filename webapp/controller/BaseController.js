@@ -163,14 +163,8 @@ sap.ui.define([
 
 		isLogging: function() {
 			var uid = localStorage.getItem("uid");
-			var email = localStorage.getItem("email");
 			if (!uid) {
 				this.getRouter().navTo("loginView");
-				this.getGlobalModel().setProperty("/isLogging", 1);
-				// MessageBox.error("Xin lỗi! Bạn cần đăng nhập để tiếp tục");
-			} else {
-				this.getGlobalModel().setProperty("/accountId", uid);
-				this.getGlobalModel().setProperty("/username", email);
 			}
 		},
 

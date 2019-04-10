@@ -16,8 +16,6 @@ sap.ui.define([
 			Device.media.attachHandler(function (oDevice) {
 				this.getModel("view").setProperty("/isPhone", oDevice.name === "Phone");
 			}.bind(this));
-			
-			console.log(this.getGlobalModel().getProperty("/username"));
 		}
 	});
 });

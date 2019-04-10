@@ -27,6 +27,7 @@ sap.ui.define([
 		},
 
 		_onRouteMatched: function() {
+			this.isLogging();
 			this.getAllCategory();
 		},
 

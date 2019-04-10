@@ -31,6 +31,8 @@ sap.ui.define([
 					return i18n.getText("ACTIVE");
 				case 3:
 					return i18n.getText("BANNED");
+				case 4:
+					return i18n.getText("PENDING");
 				case 5:
 					return i18n.getText("ADMIN");
 				default:
@@ -46,6 +48,8 @@ sap.ui.define([
 					return ValueState.Success;
 				case 3:
 					return ValueState.Error;
+				case 4:
+					return ValueState.Information;
 				case 5:
 					return ValueState.None;
 			}
@@ -71,6 +75,31 @@ sap.ui.define([
 					return ValueState.Warning;
 				case 2:
 					return ValueState.Success;
+				case 3:
+					return ValueState.None;
+			}
+		},
+
+		userStatusDesc: function(sStatus) {
+			var i18n = this.getResourceBundle();
+			switch (sStatus) {
+				case 1:
+					return i18n.getText("ACTIVE");
+				case 2:
+					return i18n.getText("DEACTIVE");
+				case 3:
+					return i18n.getText("NOT_ACTIVE");
+				default:
+					return "";
+			}
+		},
+
+		userStatusState: function(sStatus) {
+			switch (sStatus) {
+				case 1:
+					return ValueState.Success;
+				case 2:
+					return ValueState.Warning;
 				case 3:
 					return ValueState.Error;
 			}

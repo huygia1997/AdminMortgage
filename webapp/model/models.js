@@ -78,9 +78,9 @@ sap.ui.define([
 			return data;
 		},
 
-		getShopDetail: function(shopId) {
+		getShopDetail: function(shopId, isFromAdminPage) {
 			var data;
-			var url = serverInfo.url + "/thong-tin-cua-hang?shopId=" + shopId;
+			var url = serverInfo.url + "/thong-tin-cua-hang?shopId=" + shopId + "&isFromAdminPage=" + isFromAdminPage;
 			$.ajax({
 				type: "GET",
 				url: url,
@@ -376,10 +376,30 @@ sap.ui.define([
 			});
 			return data;
 		},
-		
+
 		checkEmail: function(data) {
 			var check;
 			var url = serverInfo.url + "/kiem-tra-tai-khoan";
+			$.ajax({
+				type: "POST",
+				url: url,
+				context: this,
+				data: data,
+				dataType: 'json',
+				async: false,
+				success: function(d, r, xhr) {
+					check = r;
+				},
+				error: function(e) {
+					check = e;
+				}
+			});
+			return check;
+		},
+
+		changeStatusOfUser: function(data) {
+			var check;
+			var url = serverInfo.url + "/thay-doi-trang-thai-tai-khoan";
 			$.ajax({
 				type: "POST",
 				url: url,

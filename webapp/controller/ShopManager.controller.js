@@ -35,6 +35,7 @@ sap.ui.define([
 		},
 
 		_onRouteMatched: function() {
+			this.isLogging();
 			this.getAllStore(0);
 			this.getStatusShop();
 		},
@@ -75,7 +76,7 @@ sap.ui.define([
 				}
 				var listDialogModel = new JSONModel();
 
-				var getList = models.getShopDetail(shopId);
+				var getList = models.getShopDetail(shopId, true);
 				listDialogModel.setData(getList);
 				this._detailShopDialog.setModel(listDialogModel, "listResult");
 

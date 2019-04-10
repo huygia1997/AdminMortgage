@@ -5,10 +5,11 @@
 				<items>
 					<IconTabFilter key="1" text="{i18n>info_user}">
 						<VBox class="fragment_shopDetail">
-							<VBox class="itemOfShopDetail">
-								<Label text="{i18n>lb_becomeAdmin}" />
-								<Button text="{i18n>btn_becomeAdmin}" press="onActiveRoleAdmin" class="btn_active_shop margin"/>
-							</VBox>
+							<HBox class="itemOfShopDetail">
+								<Button visible="{= ${listResult>/status} !== 3 }" text="{i18n>lb_becomeAdmin}" press="onActiveRoleAdmin" class="btn_active_shop margin"/>
+								<Button visible="{= ${listResult>/status} !== 3 }" text="{i18n>btn_ban}" press="onBanUser" class="btn_unactive_shop margin"/>
+								<Button visible="{= ${listResult>/status} === 3 }" text="{i18n>btn_active}" press="onActiveUser" class="btn_active_shop margin"/>
+							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_cateImage}" class="label_shopDetail"/>
 								<Image src="{listResult>/avaURL}" class="image_User"/>
@@ -32,7 +33,7 @@
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_role}" class="label_shopDetail"/>
 								<ObjectStatus text="{ path: 'listResult>/role/id', formatter: '.formatter.roleUser' }"
-								state="{ path: 'listResult>/role/id', formatter: '.formatter.roleUserState' }" class="title_shopDetail"/>
+									state="{ path: 'listResult>/role/id', formatter: '.formatter.roleUserState' }" class="title_shopDetail"/>
 							</HBox>
 						</VBox>
 					</IconTabFilter>
@@ -62,8 +63,7 @@
 										<Title text="{oModelShop>shopName}"/>
 									</HBox>
 									<HBox>
-										<RatingIndicator id="RI_default" maxValue="5" 
-											class="sapUiSmallMarginBottom fixCenter customTextShop" value="{oModelShop>rating}"
+										<RatingIndicator id="RI_default" maxValue="5" class="sapUiSmallMarginBottom fixCenter customTextShop" value="{oModelShop>rating}"
 											tooltip="Rating Tooltip" displayOnly="true"/>
 									</HBox>
 								</VBox>
