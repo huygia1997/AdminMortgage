@@ -36,7 +36,7 @@
 						<Label wrapping="true" textAlign="Center" wrappingType="Hyphenated" text="{i18n>lb_address}"/>
 					</Column>
 					<Column>
-						<Label wrapping="true" textAlign="Center" wrappingType="Hyphenated" text="{i18n>lb_email}"/>
+						<Label wrapping="true" textAlign="Center" wrappingType="Hyphenated" text="{i18n>lb_emailPresent}"/>
 					</Column>
 					<Column>
 						<Label wrapping="true" textAlign="Center" wrappingType="Hyphenated" text="{i18n>lb_status}"/>

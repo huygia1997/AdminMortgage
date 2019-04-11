@@ -6,6 +6,10 @@
 					<IconTabFilter key="1" text="{i18n>info_user}">
 						<VBox class="fragment_shopDetail">
 							<HBox class="itemOfShopDetail">
+								<Label text="{i18n>lb_emailPresent}" class="label_shopDetail"/>
+								<Title class="title_shopDetail" text="{listResult>/emailOwerShop}" />
+							</HBox>
+							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_status}" class="label_shopDetail"/>
 								<ObjectStatus class="title_shopDetail" text="{ path: 'listResult>/status', formatter: '.formatter.shopStatusDesc' }"
 									state="{ path: 'listResult>/status', formatter: '.formatter.shopStatusState' }"/>
@@ -91,16 +95,22 @@
 						</VBox>
 					</IconTabFilter>
 					<IconTabSeparator icon=""/>
-					<IconTabFilter visible="{= ${listResult>/status} === 5}" key="2" text="{i18n>tab_changeOwnShop}">
+					<IconTabFilter key="2" text="{i18n>tab_changeOwnShop}">
 						<VBox class="fragment_shopDetail">
 							<VBox class="itemOfShopDetail">
-								<Label text="{i18n>lb_email}"/>
+								<Label text="{i18n>lb_emailPresent}"/>
+								<HBox>
+									<Input editable="false" id="input_emailPresent" type="Email" value="{listResult>/emailOwerShop}"/>
+								</HBox>
+							</VBox>
+							<VBox class="itemOfShopDetail">
+								<Label text="{i18n>lb_inputEmail}"/>
 								<HBox>
 									<Input id="input_checkEmail" type="Email"/>
 									<Button text="{i18n>check}" press="checkEmail" class="btn_checkEmail"/>
 								</HBox>
-								<Button text="{i18n>btn_changeOwnShop}" press="onChangeOwnShop" />
 							</VBox>
+							<Button text="{i18n>btn_changeOwnShop}" press="onChangeOwnShop"/>
 						</VBox>
 					</IconTabFilter>
 				</items>

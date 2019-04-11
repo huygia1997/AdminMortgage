@@ -80,6 +80,11 @@ sap.ui.define([
 				listDialogModel.setData(getList);
 				this._detailShopDialog.setModel(listDialogModel, "listResult");
 
+				var getOwnerShop = models.getOwnerShopInfo(shopId);
+				if (getOwnerShop) {
+					this._detailShopDialog.getModel("listResult").setProperty("/emailOwerShop", getOwnerShop.username);
+				}
+
 				var status = getList.status;
 				if (status !== 2) {
 					this._detailShopDialog.getModel("listResult").setProperty("/active", true);
@@ -96,7 +101,9 @@ sap.ui.define([
 				//Set models which is belonged to View to Fragment
 				this.getView().addDependent(this._detailShopDialog);
 				this.getDataCity();
+
 				this._detailShopDialog.open();
+
 				//set map
 				this.getView().byId("map_canvas").addStyleClass("myMap");
 				var mapOptions = {
@@ -401,8 +408,9 @@ sap.ui.define([
 				var shopId = this._detailShopDialog.getModel("listResult").getProperty("/id");
 				var email = this.getView().byId("input_checkEmail").getValue();
 				var change = models.changeOwnShop(shopId, email);
-				if(change === "success") {
+				if (change === "success") {
 					MessageBox.success("Kích hoạt tài khoản thành chủ Cửa hàng thành công!");
+					this._detailShopDialog.close();
 				} else {
 					MessageBox.error("Kích hoạt thất bại!");
 				}

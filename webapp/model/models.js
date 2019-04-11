@@ -415,6 +415,26 @@ sap.ui.define([
 				}
 			});
 			return check;
+		},
+
+		getOwnerShopInfo: function(shopId) {
+			var data;
+			var url = serverInfo.url + "/thong-tin-nguoi-so-huu?shopId=" + shopId;
+			$.ajax({
+				type: "GET",
+				url: url,
+				context: this,
+				dataType: 'json',
+				async: false,
+				success: function(d, r, xhr) {
+					data = d;
+				},
+				error: function(e) {
+					data = e;
+				}
+
+			});
+			return data;
 		}
 	};
 
