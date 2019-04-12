@@ -7,14 +7,14 @@
 						<VBox class="fragment_shopDetail">
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_emailPresent}" class="label_shopDetail"/>
-								<Title class="title_shopDetail" text="{listResult>/emailOwerShop}" />
+								<Title class="title_shopDetail" text="{listResult>/emailOwerShop}" id="txtEmailOwnerShop" />
 							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_status}" class="label_shopDetail"/>
 								<ObjectStatus class="title_shopDetail" text="{ path: 'listResult>/status', formatter: '.formatter.shopStatusDesc' }"
 									state="{ path: 'listResult>/status', formatter: '.formatter.shopStatusState' }"/>
 								<Button visible="{= ${listResult>/active} === true}" text="{i18n>btn_active}" press="onActiveShop" class="btn_active_shop"/>
-								<Button visible="{= ${listResult>/active} === false}" text="{i18n>BANNED}" press="onUnActiveShop" class="btn_unactive_shop"/>
+								<Button visible="{= ${listResult>/active} === false || ${listResult>/status} === 1}" text="{i18n>BANNED}" press="onUnActiveShop" class="btn_unactive_shop"/>
 							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_cateImage}" class="label_shopDetail"/>
@@ -26,7 +26,7 @@
 							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_shopName}" class="label_shopDetail"/>
-								<Input class="input_updateShop" value="{listResult>/shopName}" type="Text" visible="{= ${listResult>/status} === 5}"/>
+								<Input id="txtShopName" class="input_updateShop" value="{listResult>/shopName}" type="Text" visible="{= ${listResult>/status} === 5}"/>
 								<Title class="title_shopDetail" text="{listResult>/shopName}" visible="{= ${listResult>/status} !== 5}"/>
 							</HBox>
 							<HBox class="itemOfShopDetail">
@@ -36,7 +36,7 @@
 							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_phone}" class="label_shopDetail"/>
-								<Input class="input_updateShop" value="{listResult>/phoneNumber}" type="Tel" visible="{= ${listResult>/status} === 5}"/>
+								<Input id="txtPhone" class="input_updateShop" value="{listResult>/phoneNumber}" type="Tel" visible="{= ${listResult>/status} === 5}"/>
 								<Title class="title_shopDetail" text="{listResult>/phoneNumber}" visible="{= ${listResult>/status} !== 5}"/>
 							</HBox>
 							<HBox visible="{= ${listResult>/status} === 5}" class="itemOfShopDetail">
@@ -56,7 +56,7 @@
 							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_address}" class="label_shopDetail"/>
-								<Input change="getLocationFromInput" class="input_updateShop" value="{listResult>/fullAddress}" type="Text"
+								<Input id="txtAddress" change="getLocationFromInput" class="input_updateShop" value="{listResult>/fullAddress}" type="Text"
 									visible="{= ${listResult>/status} === 5}"/>
 								<Title class="title_shopDetail" text="{listResult>/fullAddress}" visible="{= ${listResult>/status} !== 5}"/>
 							</HBox>
@@ -64,21 +64,21 @@
 								class="custom-map-register"></HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_email}" class="label_shopDetail"/>
-								<Input class="input_updateShop" value="{listResult>/email}" type="Email" visible="{= ${listResult>/status} === 5}"/>
+								<Input id="txtEmail" class="input_updateShop" value="{listResult>/email}" type="Email" visible="{= ${listResult>/status} === 5}"/>
 								<Title class="title_shopDetail" text="{listResult>/email}" visible="{= ${listResult>/status} !== 5}"/>
 							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_facebook}" class="label_shopDetail"/>
-								<Input class="input_updateShop" value="{listResult>/facebook}" type="Url" visible="{= ${listResult>/status} === 5}"/>
+								<Input id="txtFacebook" class="input_updateShop" value="{listResult>/facebook}" type="Url" visible="{= ${listResult>/status} === 5}"/>
 								<Title class="title_shopDetail" text="{listResult>/facebook}" visible="{= ${listResult>/status} !== 5}"/>
 							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_policy}" class="label_shopDetail"/>
-								<Title class="title_shopDetail" text="{listResult>/policy}"/>
+								<Title id="txtPolicy" class="title_shopDetail" text="{listResult>/policy}"/>
 							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_view}" class="label_shopDetail"/>
-								<Title class="title_shopDetail" text="{listResult>/viewCount} lượt xem"/>
+								<Title id="txtView" class="title_shopDetail" text="{listResult>/viewCount} lượt xem"/>
 							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_category}" class="label_shopDetail"/>

@@ -24,16 +24,16 @@ sap.ui.define([
 		},
 
 		onLoginPressed: function() {
-			var emailValue = this.getView().byId("_txtUsername").getValue();
+			var emailValue = this.getView().byId("_txtEmail").getValue();
 			var checkEmail = this.validateEmailGlobal(emailValue);
 			// var loginModel = this.getModel("loginModel");
-			var username = this.getView().byId("_txtUsername").getValue();
+			var username = this.getView().byId("_txtEmail").getValue();
 			var password = this.getView().byId("_txtPassword").getValue();
 			// var username = loginModel.getProperty("/username");
 			// var password = loginModel.getProperty("/password");
 			// 
 			if (username === "" || password === "") {
-				this.getView().byId("_txtUsername").setValueState(sap.ui.core.ValueState.Error);
+				this.getView().byId("_txtEmail").setValueState(sap.ui.core.ValueState.Error);
 				this.getView().byId("_txtPassword").setValueState(sap.ui.core.ValueState.Error);
 				MessageBox.error("Không được để trống!");
 			} else if (!checkEmail) {
@@ -64,12 +64,12 @@ sap.ui.define([
 		},
 
 		validateEmail: function() {
-			var emailValue = this.getView().byId("userName").getValue();
+			var emailValue = this.getView().byId("_txtEmail").getValue();
 
 			var mailregex = /^\w+[\w-+\.]*\@\w+([-\.]\w+)*\.[a-zA-Z]{2,}$/;
 
 			if (!mailregex.test(emailValue)) {
-				this.getView().byId("userName").setValueState(sap.ui.core.ValueState.Error);
+				this.getView().byId("_txtEmail").setValueState(sap.ui.core.ValueState.Error);
 			}
 		},
 

@@ -11,7 +11,7 @@
 							<Title level="H2" text="{i18n>title_store}"/>
 							<ToolbarSpacer/>
 							<!--<Button icon="sap-icon://add" text="{i18n>btn_create_transaction}" press="onCreateTransaction"/>-->
-							<SearchField width="50%" search="onFilterShopName"/>
+							<SearchField width="50%" search="onFilterShopName" id="searchShop"/>
 							<Select change="onChangeStatus" selectItemId="{oModelStatus>status}" id="filterStatus"
 								items="{ path: 'oModelStatus>/results', templateShareable: false }">
 								<core:Item key="{oModelStatus>status}" text="{oModelStatus>statusName}"/>
