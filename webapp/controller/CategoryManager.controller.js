@@ -21,7 +21,6 @@ sap.ui.define([
 			Device.media.attachHandler(function(oDevice) {
 				this.getModel("view").setProperty("/isPhone", oDevice.name === "Phone");
 			}.bind(this));
-
 			oRouter.getRoute("categoryManager").attachPatternMatched(this._onRouteMatched, this);
 
 		},
@@ -135,8 +134,8 @@ sap.ui.define([
 					//Here the image is on the backend, so i call it again and set the image
 					// var model = that.getModel("createTrans");
 
-					if (this.checkDialog == false) {
-						var getModelCate = that._cateDetailDialog.getModel("oModelNewCate");
+					if (that.checkDialog == true) {
+						var getModelCate = that._createCateDialog.getModel("oModelNewCate");
 						if (!getModelCate) {
 							return;
 						}
@@ -146,7 +145,7 @@ sap.ui.define([
 						// });
 						getModelCate.updateBindings(true);
 					} else {
-						var oModelCateDetail = that._createCateDialog.getModel("oModelCateDetail");
+						var oModelCateDetail = that._cateDetailDialog.getModel("oModelCateDetail");
 						if (!oModelCateDetail) {
 							return;
 						}

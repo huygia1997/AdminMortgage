@@ -49,7 +49,7 @@
 							<Image src="{oModelShop>avatarUrl}" class="image_User"/>
 							<Title text="{oModelShop>shopName}"/>
 							<Title text="{oModelShop>phoneNumber}"/>
-							<Title text="{oModelShop>address/fullAddress}"/>
+							<Title text="{oModelShop>address/fullAddress}" class="title_shopManager"/>
 							<Title text="{oModelShop>email}"/>
 							<ObjectStatus text="{ path: 'oModelShop>status', formatter: '.formatter.shopStatusDesc' }"
 								state="{ path: 'oModelShop>status', formatter: '.formatter.shopStatusState' }"/>
