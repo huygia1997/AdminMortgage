@@ -3,7 +3,7 @@
 	<Page showHeader="false">
 		<content>
 			<PullToRefresh visible="{device>/support/touch}" refresh="onRefresh"/>
-			<Table fixedLayout="false" popinLayout="GridSmall" alternateRowColors="true" inset="{= !${device>/support/touch}}"
+			<Table growing="true" growingThreshold="10" growingScrollToLoad="true" fixedLayout="false" popinLayout="GridSmall" alternateRowColors="true" inset="{= !${device>/support/touch}}"
 				items="{path: 'oModelUser>/results', sorter: {path: 'oModelUser>role/id', descending: false }}" id="ListUser">
 				<headerToolbar>
 					<Toolbar>

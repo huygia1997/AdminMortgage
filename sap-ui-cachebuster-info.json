@@ -13,7 +13,7 @@
   "webapp/controller/InitView.controller.js": "1554875036860",
   "webapp/controller/LoginView.controller.js": "1555039198643",
   "webapp/controller/settings/MasterSettings.controller.js": "1554875036881",
-  "webapp/controller/ShopManager.controller.js": "1555043163937",
+  "webapp/controller/ShopManager.controller.js": "1555347609962",
   "webapp/controller/Statistics.controller.js": "1554875036909",
   "webapp/controller/UserManager.controller.js": "1554881860289",
   "webapp/css/style.css": "1555324480415",
@@ -32,7 +32,7 @@
   "webapp/model/dataDistrisct.json": "1554875037017",
   "webapp/model/dataLocation.json": "1554875037025",
   "webapp/model/formatter.js": "1554891639461",
-  "webapp/model/models.js": "1555319120083",
+  "webapp/model/models.js": "1555347671173",
   "webapp/model/roleOfUser.json": "1554875037060",
   "webapp/model/sideContent.json": "1554875037065",
   "webapp/model/statusShop.json": "1554891009453",
@@ -58,9 +58,9 @@
   "webapp/view/settings/AppSettings.view.xml": "1554875037245",
   "webapp/view/settings/DetailSettings.view.xml": "1554875037253",
   "webapp/view/settings/MasterSettings.view.xml": "1554875037261",
-  "webapp/view/ShopManager.view.xml": "1555324336936",
+  "webapp/view/ShopManager.view.xml": "1555326702872",
   "webapp/view/Statistics.view.xml": "1554875037276",
   "webapp/view/StatisticsD3.view.xml": "1554875037282",
   "webapp/view/StatisticsMicro.view.xml": "1554875037289",
-  "webapp/view/UserManager.view.xml": "1555048730715"
+  "webapp/view/UserManager.view.xml": "1555326731175"
 }

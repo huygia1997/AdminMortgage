@@ -80,7 +80,8 @@ sap.ui.define([
 
 		getShopDetail: function(shopId, increaseView) {
 			var data;
-			var url = serverInfo.url + "/thong-tin-cua-hang?shopId=" + shopId + "&increaseView=" + increaseView;
+			var isAdmin = true;
+			var url = serverInfo.url + "/thong-tin-cua-hang?shopId=" + shopId + "&increaseView=" + increaseView + "&isAdmin=" + isAdmin;
 			$.ajax({
 				type: "GET",
 				url: url,

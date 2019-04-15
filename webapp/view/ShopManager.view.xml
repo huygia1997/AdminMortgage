@@ -3,7 +3,7 @@
 	<Page showHeader="false">
 		<content>
 			<PullToRefresh visible="{device>/support/touch}" refresh="onRefresh"/>
-			<Table id="ListShop" fixedLayout="false" popinLayout="GridSmall" alternateRowColors="true" inset="{= !${device>/support/touch}}"
+			<Table growing="true" growingThreshold="10" growingScrollToLoad="true" id="ListShop" fixedLayout="false" popinLayout="GridSmall" alternateRowColors="true" inset="{= !${device>/support/touch}}"
 				items="{oModelShop>/results}">
 				<headerToolbar>
 					<Toolbar>
