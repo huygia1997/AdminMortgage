@@ -80,7 +80,7 @@ sap.ui.define([
 			this.getAllCategory();
 		},
 
-		onCreateCate: function() {
+		onCreateCategory: function() {
 			if (!this._createCateDialog) {
 				this._createCateDialog = sap.ui.xmlfragment(this.getId(), "sap.ui.demo.toolpageapp.fragment.CreateCate",
 					this);
@@ -135,8 +135,8 @@ sap.ui.define([
 					//Here the image is on the backend, so i call it again and set the image
 					// var model = that.getModel("createTrans");
 
-					if (this.checkDialog) {
-						var getModelCate = that._createCateDialog.getModel("oModelNewCate");
+					if (this.checkDialog == false) {
+						var getModelCate = that._cateDetailDialog.getModel("oModelNewCate");
 						if (!getModelCate) {
 							return;
 						}
@@ -146,16 +146,18 @@ sap.ui.define([
 						// });
 						getModelCate.updateBindings(true);
 					} else {
-						var oModelCateDetail = that.getModel("oModelCateDetail");
+						var oModelCateDetail = that._createCateDialog.getModel("oModelCateDetail");
 						if (!oModelCateDetail) {
 							return;
 						}
 						oModelCateDetail.setProperty("/iconUrl", encodeURI(oEvt.data.link));
+						oModelCateDetail.updateBindings(true);
 					}
 
 				},
 				error: function(oEvt) {
 					//Handle error here
+					console.log("error");
 				}
 			});
 		},

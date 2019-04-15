@@ -12,15 +12,15 @@
 							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_cateImage}" class="label_shopDetail"/>
-								<Image src="{listResult>/avaURL}" class="image_User"/>
+								<Image src="{listResult>/avaURL}" class="image_User" id="userImage" />
 							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_name}" class="label_shopDetail"/>
-								<Title text="{listResult>/name}" class="title_shopDetail"/>
+								<Title id="txtName" text="{listResult>/name}" class="title_shopDetail"/>
 							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_phone}" class="label_shopDetail"/>
-								<Title text="{listResult>/phoneNumber}" class="title_shopDetail"/>
+								<Title id="txtPhone" text="{listResult>/phoneNumber}" class="title_shopDetail"/>
 							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_address}" class="label_shopDetail"/>

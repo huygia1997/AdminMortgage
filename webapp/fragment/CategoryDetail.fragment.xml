@@ -5,7 +5,8 @@
 				<HBox class="box_createCateImg">
 					<Image class="img_cate" id="img_cateDetail" src="{oModelCateDetail>/iconUrl}"/>
 					<u:FileUploader class="btn_uploadFile" iconOnly="true" multiple="false" buttonOnly="true" icon="sap-icon://add-photo" uploadOnChange="false"
-						useMultipart="false" fileType="JPG,JPEG,jpeg,jpg,PNG,png" sameFilenameAllowed="true" typeMissmatch="onTypeMissmatch" change="onUploadPress"/>
+						useMultipart="false" fileType="JPG,JPEG,jpeg,jpg,PNG,png" 
+						sameFilenameAllowed="true" typeMissmatch="onTypeMissmatch" change="onUploadPress"/>
 				</HBox>
 				<HBox class="box_createCateImg">
 					<Label text="{i18n>lb_newCate}"/>

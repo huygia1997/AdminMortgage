@@ -78,9 +78,9 @@ sap.ui.define([
 			return data;
 		},
 
-		getShopDetail: function(shopId, isFromAdminPage) {
+		getShopDetail: function(shopId, increaseView) {
 			var data;
-			var url = serverInfo.url + "/thong-tin-cua-hang?shopId=" + shopId + "&isFromAdminPage=" + isFromAdminPage;
+			var url = serverInfo.url + "/thong-tin-cua-hang?shopId=" + shopId + "&increaseView=" + increaseView;
 			$.ajax({
 				type: "GET",
 				url: url,

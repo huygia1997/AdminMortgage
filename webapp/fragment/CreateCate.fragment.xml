@@ -4,13 +4,14 @@
 			<VBox>
 				<HBox class="box_createCateImg">
 					<Label text="{i18n>lb_imgCate}" />
-					<Image class="img_cate" id="img_cateCreate" src="{oModelNewCate>/imgCate}"/>
-					<u:FileUploader class="btn_uploadFile" iconOnly="true" multiple="false" buttonOnly="true" icon="sap-icon://add-photo" uploadOnChange="false"
+					<Image class="img_cate" id="img_cateCreate" src="{oModelNewCate>/iconUrl}" />
+					<u:FileUploader class="btn_uploadFile" iconOnly="true" multiple="false" buttonOnly="true"
+					icon="sap-icon://add-photo" uploadOnChange="false"
 						useMultipart="false" fileType="JPG,JPEG,jpeg,jpg,PNG,png" sameFilenameAllowed="true" typeMissmatch="onTypeMissmatch" change="onUploadPress"/>
 				</HBox>
 				<HBox class="box_createCateImg">
 					<Label text="{i18n>lb_newCate}" />
-					<Input id="input_cateCreate" type="text" value="{oModelNewCate>/cateName}" />
+					<Input id="input_cateCreate" type="Text" value="{oModelNewCate>/cateName}" />
 				</HBox>
 				<Button text="{i18n>btn_createCate}" press="onCreateNewCate" class="btn_createNewCate" />
 			</VBox>

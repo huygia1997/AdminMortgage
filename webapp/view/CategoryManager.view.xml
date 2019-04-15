@@ -10,7 +10,7 @@
 							<Title level="H2" text="{i18n>title_store}"/>
 							<ToolbarSpacer/>
 							<SearchField width="50%" search="onFilterCateName" />
-							<Button icon="sap-icon://add" text="{i18n>btn_create_new_cate}" press="onCreateCate"/>
+							<Button icon="sap-icon://add" text="{i18n>btn_create_new_cate}" press="onCreateCategory"/>
 						</content>
 					</Toolbar>
 				</headerToolbar>

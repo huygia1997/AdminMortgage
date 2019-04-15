@@ -11,7 +11,7 @@
 							<Title level="H2" text="{i18n>title_user}"/>
 							<ToolbarSpacer/>
 							<!--<Button icon="sap-icon://add" text="{i18n>btn_create_transaction}" press="onCreateTransaction"/>-->
-							<SearchField width="50%" search="onFilterUserName"/>
+							<SearchField width="50%" search="onFilterUserName" id="searchUser"/>
 							<Select change="onChangeRole" selectItemId="{oModelRole>roleId}" id="filterRole"
 								items="{ path: 'oModelRole>/results', templateShareable: false }">
 								<core:Item key="{oModelRole>roleId}" text="{oModelRole>roleName}"/>
@@ -51,7 +51,7 @@
 							<Text text="{oModelUser>accountId}"/>
 							<Image src="{oModelUser>avaURL}" class="image_User"/>
 							<Title text="{oModelUser>name}"/>
-							<Text text="{oModelUser>address}"/>
+							<Text text="{oModelUser>address}" />
 							<Text text="{oModelUser>email}"/>
 							<Text text="{oModelUser>phoneNumber}"/>
 							<ObjectStatus text="{ path: 'oModelUser>role/id', formatter: '.formatter.roleUser' }"
