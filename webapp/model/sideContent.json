@@ -6,6 +6,12 @@
 		"key": "shopManager",
 		"items": []
 	}, {
+		"title": "Cửa hàng chờ đăng kí",
+		"icon": "sap-icon://retail-store-manager",
+		"expanded": false,
+		"key": "shopPending",
+		"items": []
+	}, {
 		"title": "Người dùng",
 		"icon": "sap-icon://leads",
 		"expanded": false,

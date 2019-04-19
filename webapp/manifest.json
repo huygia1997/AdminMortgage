@@ -92,6 +92,10 @@
 				"pattern": "categoryManager",
 				"name": "categoryManager",
 				"target": "categoryManager"
+			}, {
+				"pattern": "shopPending",
+				"name": "shopPending",
+				"target": "shopPending"
 			}],
 			"targets": {
 				"login": {
@@ -130,6 +134,13 @@
 				"categoryManager": {
 					"parent": "app",
 					"viewName": "CategoryManager",
+					"viewLevel": 2,
+					"controlId": "mainContents",
+					"controlAggregation": "pages"
+				},
+				"shopPending": {
+					"parent": "app",
+					"viewName": "ShopPending",
 					"viewLevel": 2,
 					"controlId": "mainContents",
 					"controlAggregation": "pages"

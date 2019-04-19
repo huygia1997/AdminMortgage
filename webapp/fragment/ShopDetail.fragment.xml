@@ -95,7 +95,7 @@
 						</VBox>
 					</IconTabFilter>
 					<IconTabSeparator icon=""/>
-					<IconTabFilter key="2" text="{i18n>tab_changeOwnShop}">
+					<IconTabFilter key="2" text="{i18n>tab_changeOwnShop}" visible="{= ${listResult>/status} !== 1}">
 						<VBox class="fragment_shopDetail">
 							<VBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_emailPresent}"/>
