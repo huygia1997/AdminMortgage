@@ -102,9 +102,14 @@ sap.ui.define([
 		activateShop: function(shopId, action) {
 			var data;
 			var url = serverInfo.url + "/xu-ly-yeu-cau?shopId=" + shopId + "&action=" + action;
+			var dataRequest = {
+				shopId: shopId,
+				action: action
+			};
 			$.ajax({
-				type: "GET",
+				type: "POST",
 				url: url,
+				data: dataRequest,
 				context: this,
 				dataType: 'json',
 				async: false,
