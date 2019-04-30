@@ -151,3 +151,6 @@
 .title_shopManager {
 	width: 450px;
 }
+.sapMListNoDataText {
+	display: none !important;
+}

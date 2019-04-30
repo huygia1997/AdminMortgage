@@ -5,6 +5,7 @@ sap.ui.define([
 	"use strict";
 	var serverInfo = {
 		url: "https://backend-mortgage.dfksoft.com/new",
+		// url: "http://172.20.10.2:8080", //máy HuyTG
 		localUrl: "model",
 		useLocal: false
 	};
@@ -155,11 +156,16 @@ sap.ui.define([
 			if (serverInfo.useLocal) {
 				url = serverInfo.localUrl + "/userDetail.json";
 			} else {
-				url = serverInfo.url + "/sua-thong-tin-nguoi-dung?roleId=" + roleId + "&email=" + email;
+				url = serverInfo.url + "/sua-thong-tin-nguoi-dung";
 			}
+			var dataAjax = {
+				roleId: roleId,
+				email: email
+			};
 			$.ajax({
-				type: "GET",
+				type: "POST",
 				url: url,
+				data: dataAjax,
 				context: this,
 				dataType: 'json',
 				async: false,

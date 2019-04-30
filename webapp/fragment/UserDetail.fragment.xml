@@ -12,7 +12,7 @@
 							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_cateImage}" class="label_shopDetail"/>
-								<Image src="{listResult>/avaURL}" class="image_User" id="userImage" />
+								<Image src="{listResult>/avaURL}" class="image_User" id="userImage"/>
 							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_name}" class="label_shopDetail"/>
@@ -36,6 +36,24 @@
 									state="{ path: 'listResult>/role/id', formatter: '.formatter.roleUserState' }" class="title_shopDetail"/>
 							</HBox>
 						</VBox>
+					</IconTabFilter>
+					<IconTabSeparator icon=""/>
+					<IconTabFilter key="4" text="{i18n>tab_listShop}">
+						<List id="ListShopOwner" items="{oModelOwnerShop>/results}" class="itemFavorite_container">
+							<CustomListItem>
+								<VBox>
+									<Image src="{oModelOwnerShop>avatarUrl}" class="itemFavorite_image"/>
+									<HBox>
+										<Title text="{oModelOwnerShop>shopName}"/>
+									</HBox>
+									<HBox>
+										<RatingIndicator id="RI_ownerShop" maxValue="5" class="sapUiSmallMarginBottom fixCenter customTextShop" 
+											value="{oModelOwnerShop>rating}"
+											tooltip="Rating Tooltip" displayOnly="true"/>
+									</HBox>
+								</VBox>
+							</CustomListItem>
+						</List>
 					</IconTabFilter>
 					<IconTabSeparator icon=""/>
 					<IconTabFilter key="2" text="{i18n>tab_favoriteItem}">

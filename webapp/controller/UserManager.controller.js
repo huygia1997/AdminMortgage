@@ -85,6 +85,13 @@ sap.ui.define([
 					results: listShop
 				});
 				this.setModel(oModelShop, "oModelShop");
+				
+				var oModelOwnerShop = new JSONModel();
+				var ownerShop = getList.listShopOwner;
+				oModelOwnerShop.setData({
+					results: ownerShop
+				});
+				this.setModel(oModelOwnerShop, "oModelOwnerShop");
 
 				//Set models which is belonged to View to Fragment
 				this.getView().addDependent(this._detailUserDialog);
@@ -104,6 +111,8 @@ sap.ui.define([
 					MessageBox.success("Thay đổi thành công!");
 					this.getListUser(1);
 					this._detailUserDialog.close();
+				} else if(changeRole.status === 400){
+					MessageBox.error("Tài khoản không được quyền trở thành Quản trị viên!");
 				} else {
 					MessageBox.error("Lỗi hệ thống!");
 				}
