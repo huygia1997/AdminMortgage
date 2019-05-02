@@ -58,7 +58,7 @@
 								<Label text="{i18n>lb_address}" class="label_shopDetail"/>
 								<Input id="txtAddress" change="getLocationFromInput" class="input_updateShop" value="{listResult>/fullAddress}" type="Text"
 									visible="{= ${listResult>/status} === 5}"/>
-								<Title class="title_shopDetail" text="{listResult>/fullAddress}" visible="{= ${listResult>/status} !== 5}"/>
+								<Text class="title_shopDetail" text="{listResult>/fullAddress}" visible="{= ${listResult>/status} !== 5}"/>
 							</HBox>
 							<HBox visible="{= ${listResult>/status} === 5}" id="map_canvas" fitContainer="true" justifyContent="Center" alignItems="Center"
 								class="custom-map-register"></HBox>
@@ -74,7 +74,7 @@
 							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_policy}" class="label_shopDetail"/>
-								<Title id="txtPolicy" class="title_shopDetail" text="{listResult>/policy}"/>
+								<Text id="txtPolicy" class="title_shopDetail" text="{listResult>/policy}"/>
 							</HBox>
 							<HBox class="itemOfShopDetail">
 								<Label text="{i18n>lb_view}" class="label_shopDetail"/>
