@@ -176,6 +176,7 @@ sap.ui.define([
 				});
 			}
 			this.setModel(oModelStatus, "oModelStatus");
+			this.getView().byId("filterStatus").setProperty("selectedKey", 0);
 		},
 
 		onChangeStatus: function() {

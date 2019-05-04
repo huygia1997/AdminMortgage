@@ -252,10 +252,15 @@ sap.ui.define([
 
 		createNewCategory: function(catName, catImg) {
 			var check;
-			var url = serverInfo.url + "/tao-moi-danh-muc?catName=" + catName + "&catImg=" + catImg;
+			var dataAjax = {
+				catName: catName,
+				catImg: catImg
+			};
+			var url = serverInfo.url + "/tao-moi-danh-muc";
 			$.ajax({
-				type: "GET",
+				type: "POST",
 				url: url,
+				data: dataAjax,
 				context: this,
 				dataType: 'json',
 				async: false,
@@ -292,10 +297,16 @@ sap.ui.define([
 
 		updateCategory: function(categoryId, name, picUrl) {
 			var data;
-			var url = serverInfo.url + "/chinh-sua-danh-muc?categoryId=" + categoryId + "&name=" + name + "&picUrl=" + picUrl;
+			var dataAjax = {
+				categoryId: categoryId,
+				name: name,
+				picUrl: picUrl
+			};
+			var url = serverInfo.url + "/chinh-sua-danh-muc";
 			$.ajax({
-				type: "GET",
+				type: "POST",
 				url: url,
+				data: dataAjax,
 				context: this,
 				dataType: 'json',
 				async: false,

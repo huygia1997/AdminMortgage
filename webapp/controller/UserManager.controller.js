@@ -144,6 +144,7 @@ sap.ui.define([
 				});
 			}
 			this.setModel(oModelRole, "oModelRole");
+			this.getView().byId("filterRole").setProperty("selectedKey", 1);
 		},
 
 		onChangeRole: function() {
