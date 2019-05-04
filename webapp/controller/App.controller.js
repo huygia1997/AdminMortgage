@@ -16,7 +16,8 @@ sap.ui.define([
 	'sap/m/MessageToast',
 	'sap/ui/Device',
 	'sap/ui/core/syncStyleClass',
-	'sap/m/library'
+	'sap/m/library',
+	'sap/ui/demo/toolpageapp/model/models'
 ], function(
 	BaseController,
 	Fragment,
@@ -35,7 +36,8 @@ sap.ui.define([
 	MessageToast,
 	Device,
 	syncStyleClass,
-	mobileLibrary
+	mobileLibrary,
+	models
 ) {
 	"use strict";
 
@@ -53,6 +55,7 @@ sap.ui.define([
 		_bExpanded: true,
 
 		onInit: function() {
+			
 			this.isLogging();
 			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
 
@@ -70,6 +73,31 @@ sap.ui.define([
 				}
 			}.bind(this));
 			this.getAccountLocalStorage();
+			//Attachment matched
+			this.getRouter().getRoute("shopManager").attachPatternMatched(this._onObjectMatched, this);
+		},
+		
+		_onObjectMatched: function() {
+			setInterval(this.countShopPending(), 10000);
+		},
+		
+		countShopPending: function() {
+			var count = 0;
+			var arrList = [];
+			var getdata = models.getAllShop();
+			if (getdata.length) {
+				for (var i = 0; i < getdata.length; i++) {
+					if (getdata[i].status === 1) {
+						arrList.push(getdata[i]);
+					}
+				}
+				for (var j = 0; j < arrList.length; j++) {
+					count++;
+				}
+				var message = "Có " + count + " Cửa hàng đang chờ đăng kí";
+				this.getGlobalModel().setProperty("/message", message);
+				this.getGlobalModel().setProperty("/isActive", true);
+			}
 		},
 		
 		getAccountLocalStorage: function() {
@@ -263,7 +291,10 @@ sap.ui.define([
 				link: oLink
 			});
 			return oMessageItem;
+		},
+		
+		onNavToShopPending: function() {
+			this.getRouter().navTo("shopPending");
 		}
-
 	});
 });

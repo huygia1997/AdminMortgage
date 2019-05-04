@@ -25,6 +25,7 @@
 				<!--		<OverflowToolbarLayoutData closeOverflowOnInteraction="false"/>-->
 				<!--	</layoutData>-->
 				<!--</Button>-->
+				<Button visible="{= ${globalProperties>/isActive} ? true : false}" text="{globalProperties>/message}" press="onNavToShopPending"/>
 				<Button id="userButton" text="{globalProperties>/username}" type="Transparent" press=".onUserNamePress">
 					<layoutData>
 						<OverflowToolbarLayoutData closeOverflowOnInteraction="false"/>

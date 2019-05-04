@@ -90,6 +90,26 @@ sap.ui.define([
 					MessageBox.success("Kích hoạt Cửa hàng thành công!");
 					this._detailShopDialog.getModel("listResult").setProperty("/active", false);
 					this._detailShopDialog.getModel("listResult").setProperty("/status", activeShop.status);
+					var getShopPending = models.getAllShop(shopId, true);
+					if (getShopPending.length) {
+						var arrList = [];
+						var count = 0;
+						for (var i = 0; i < getShopPending.length; i++) {
+							if (getShopPending[i].status === 1) {
+								arrList.push(getShopPending[i]);
+							}
+						}
+						for (var j = 0; j < arrList.length; j++) {
+							count++;
+						}
+						this.getGlobalModel().setProperty("/count", count);
+						var message = "Có " + count + " Cửa hàng đang chờ đăng kí";
+						this.getGlobalModel().setProperty("/message", message);
+					} else {
+						this.getGlobalModel().setProperty("/message", "");
+						this.getGlobalModel().setProperty("/isActive", false);
+					}
+					this.getGlobalModel().updateBindings(true);
 				} else {
 					MessageBox.error("Lỗi hệ thống!");
 				}
